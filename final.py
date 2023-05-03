@@ -28,6 +28,7 @@ for i, arg in enumerate(sys.argv):
     # the Pokemon is weak against that type
     conn = sqlite3.connect('pokemon.sqlite')
     c = conn.cursor()
+    #joining database so it can be filtered out by pokemon_id
     c.execute("""
     SELECT p.id, p.name, t.name, a.against_bug, a.against_dark, a.against_dragon, a.against_electric, 
        a.against_fairy, a.against_fight, a.against_fire, a.against_flying, a.against_ghost, 
@@ -42,7 +43,7 @@ for i, arg in enumerate(sys.argv):
     
     results = c.fetchall()
 
-    
+    # going throuhg row and appending in to weak or strong
     for row in results:
         names.append(row[2])
         counter = 3
@@ -77,8 +78,8 @@ for i, arg in enumerate(sys.argv):
     team.append(row[1])
 
 
-    
 
+conn.close()
 
 answer = input("Would you like to save this team? (Y)es or (N)o: ")
 if answer.upper() == "Y" or answer.upper() == "YES":

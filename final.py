@@ -72,9 +72,10 @@ for i, arg in enumerate(sys.argv):
     print(names, end="")
     print(" is strong against ", end="")
     print(strong, end="")
-    print("but weak against", end="")
+    print(" but weak against ", end="")
     print(weak)
-    
+    team.append(row[1])
+
 
     
 
